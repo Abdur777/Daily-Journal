@@ -1,0 +1,19 @@
+<%- include("./partials/header.ejs") %>
+<h1>Home</h1>
+<p><%= homeStartingContent %></p>
+<% posts.forEach(function(post){ %>
+    <div class="post">
+        <h1><%= post.name %></h1>
+        <% if(post.content.length < 150){ %>
+            <p><%= post.content %></p>
+        <% } %>
+        <% if(post.content.length >= 150){ %>
+            <% var body = post.content.slice(0, 150) %>
+            <p><%= body %> <a href="posts/<%= post._id %>">Read more</a></p>
+        <% } %>
+        <form action="/delete/<%= post._id %>" method="POST">
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
+    </div>
+<% }) %>
+<%- include("./partials/footer.ejs") -%>
