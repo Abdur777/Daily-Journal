@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
+const path = require('path');
 
 const homeStartingContent = "Welcome to My Daily Journal! Embrace the art of introspection and self-expression with My Daily Journal. This space is yours to share thoughts, experiences, and reflections. Capture the essence of your day and let the pages of your digital journal unfold a narrative unique to you. Whether it's a profound realization, a simple joy, or a significant milestone, every entry contributes to the story of your life. Take a moment to explore the depths of your thoughts and celebrate the beauty of your journey. Feel free to add a new post, pour your heart into the words, and let your daily musings become a chronicle of your growth and discovery. Happy journaling!";
 const aboutContent = "Abdur Rafay - Full Stack Developer Greetings! I'm Abdur Rafay, a passionate and results-driven Full Stack Developer dedicated to creating innovative and efficient software solutions. With a strong foundation in both front-end and back-end development, I thrive in turning ideas into functional, user-friendly applications.";
@@ -12,6 +13,7 @@ const password = process.env.password;
 
 const app = express();
 
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
